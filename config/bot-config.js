@@ -1,6 +1,6 @@
 const { RtmClient, CLIENT_EVENTS, RTM_EVENTS, WebClient } = require('@slack/client');
 const { rand, getJoke } = require('../helpers/functions');
-const { SLACK_TOKEN } = require('./keys.js');
+// const { SLACK_TOKEN } = require('./keys.js');
 
 let randNum;
 
