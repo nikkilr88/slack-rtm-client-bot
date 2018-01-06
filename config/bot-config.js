@@ -1,6 +1,5 @@
 const { RtmClient, CLIENT_EVENTS, RTM_EVENTS, WebClient } = require('@slack/client');
-const { rand } = require('../helpers/functions');
-const jokes = require('../helpers/jokes');
+const { rand, getJoke } = require('../helpers/functions');
 
 module.exports = () => {
 
@@ -41,8 +40,10 @@ module.exports = () => {
             rtm.sendMessage('If you really need help, call a fellow human!', message.channel);
         }
         else if (msg.match(jokeReg)) {
-            let joke = jokes[rand(jokes.length)];
-            rtm.sendMessage(joke, message.channel);
+            getJoke()
+            .then(data => {
+                rtm.sendMessage(data.joke, message.channel);
+            }); 
         }
         else {
             return;
